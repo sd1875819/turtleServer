@@ -6,17 +6,11 @@ import com.example.demo.mapper.UserInfoMapper;
 import com.example.demo.pojo.UserInfoVO;
 import com.example.demo.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
-import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 
 /**
@@ -39,12 +33,10 @@ public class UserInfoController {
     UserInfoDAO userInfoDAO;
     UserInfoMapper userInfoMapper;
 
-
     /*@PostMapping 表示定义一个post接口*/
-    @PostMapping(value = "/userInfo/submit")
+    @PostMapping(value = "/submit")
     public Result submitUserInfo(@RequestBody UserInfoVO userInfoVO) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
         /* 将新增的用户信息插入数据库*/
-        if (UserInfoVO)
         userInfoService.insertUserInfoService(userInfoVO);
 
         return Result.success();

@@ -1,9 +1,9 @@
 package com.example.demo.dao;
 
 
-import com.game.mapper.UserInfoMapper;
-import com.game.pojo.UserInfoDO;
-import com.game.pojo.UserInfoVO;
+import com.example.demo.mapper.UserInfoMapper;
+import com.example.demo.pojo.UserInfoDO;
+import com.example.demo.pojo.UserInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -20,16 +20,12 @@ import java.util.List;
 public class UserInfoDAO {
 
     @Resource  /*@Resource该注解将mapper引入到使用类中*/
-    public UserInfoMapper userInfoMapper;
+    UserInfoMapper userInfoMapper;
     /**
      * @desc 将用户数据插入数据库
      * @return
      */
     public int insertUserInfoDAO(UserInfoVO userInfoVO) {
-        return userInfoMapper.insertUserInfoMapper(userInfoVO);
-    }
-
-    public List<UserInfoDO> getUserInfoDAO() {
-        return userInfoMapper.getUserInfoListMapper();
+        return userInfoMapper.insert(userInfoVO);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
     }
 }

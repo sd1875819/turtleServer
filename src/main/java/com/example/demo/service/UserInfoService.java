@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.game.pojo.UserInfoDO;
-import com.game.pojo.UserInfoVO;
+import com.example.demo.pojo.UserInfoDO;
+import com.example.demo.pojo.UserInfoVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +12,6 @@ import java.util.List;
  * @Description:
  */
 public interface UserInfoService {
-
-    List<UserInfoDO> getUserInfoService();
 
     int insertUserInfoService(UserInfoVO userInfoVO);
 }
