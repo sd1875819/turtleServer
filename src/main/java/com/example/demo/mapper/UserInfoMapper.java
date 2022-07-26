@@ -1,12 +1,8 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.demo.pojo.UserInfoDO;
-import com.example.demo.pojo.UserInfoVO;
+import com.example.demo.pojo.User;
 import org.apache.ibatis.annotations.*;
-
-import java.util.List;
 
 /**
  * @Author 11123357
@@ -15,7 +11,7 @@ import java.util.List;
  */
 @Mapper
 //BaseMapper中有各种操作数据库的方法，在需要操作数据库时直接调用即可，在VO类里直接指定要操作的表格名，并与表格里的字段一一对应即可
-public interface UserInfoMapper extends BaseMapper<UserInfoVO> {
+public interface UserInfoMapper extends BaseMapper<User> {
 /*
 //添加新的消息任务：
 //    String INSERT_STATEMENT = "INSERT INTO game-userinfo (nick_name, user_name, invest_time, email, tel_phone)" +
@@ -39,9 +35,5 @@ public interface UserInfoMapper extends BaseMapper<UserInfoVO> {
     })
     List<UserInfoDO> getUserInfoListMapper();
 */
-
-
-    // 一对多查询
-    Page<UserInfoDO> findPage(Page<UserInfoDO> page, @Param("nickName") String nickName);
 
 }

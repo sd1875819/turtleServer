@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan("com.game.mapper")  /*设置分页插件在执行时直接扫描com.game.mapper包的内容*/
+@MapperScan("com.example.demo.mapper")  /*设置分页插件在执行时直接扫描com.game.mapper包的内容*/
 public class MybatisPlusConfig {
 
     /**

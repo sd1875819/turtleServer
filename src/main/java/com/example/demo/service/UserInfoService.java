@@ -1,10 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.pojo.UserInfoDO;
-import com.example.demo.pojo.UserInfoVO;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.example.demo.pojo.User;
 
 /**
  * @Author: sunjin.sj
@@ -13,5 +9,5 @@ import java.util.List;
  */
 public interface UserInfoService {
 
-    int insertUserInfoService(UserInfoVO userInfoVO);
+    int insertUserInfoService(User user);
 }

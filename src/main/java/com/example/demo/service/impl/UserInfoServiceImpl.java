@@ -1,13 +1,11 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserInfoDAO;
-import com.example.demo.pojo.UserInfoDO;
-import com.example.demo.pojo.UserInfoVO;
+import com.example.demo.pojo.User;
 import com.example.demo.service.UserInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @Author 11123357
@@ -21,8 +19,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoDAO userInfoDAO;
 
     @Override
-    public int insertUserInfoService(UserInfoVO userInfoVO) {
-        int insertResultCode = userInfoDAO.insertUserInfoDAO(userInfoVO);
+    public int insertUserInfoService(User user) {
+        int insertResultCode = userInfoDAO.insertUserInfoDAO(user);
         return insertResultCode;
     }
 }

@@ -2,13 +2,11 @@ package com.example.demo.dao;
 
 
 import com.example.demo.mapper.UserInfoMapper;
-import com.example.demo.pojo.UserInfoDO;
-import com.example.demo.pojo.UserInfoVO;
+import com.example.demo.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @Author 11123357
@@ -25,7 +23,7 @@ public class UserInfoDAO {
      * @desc 将用户数据插入数据库
      * @return
      */
-    public int insertUserInfoDAO(UserInfoVO userInfoVO) {
-        return userInfoMapper.insert(userInfoVO);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
+    public int insertUserInfoDAO(User user) {
+        return userInfoMapper.insert(user);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
     }
 }
