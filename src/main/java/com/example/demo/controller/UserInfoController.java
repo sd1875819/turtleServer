@@ -35,6 +35,8 @@ public class UserInfoController {
 
     @Resource
     UserInfoDAO userInfoDAO;
+
+    @Resource
     UserInfoMapper userInfoMapper;
 
     /*@PostMapping 表示定义一个post接口*/
@@ -51,15 +53,15 @@ public class UserInfoController {
 
     //*从数据库分页查询*//
     @GetMapping
-    public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
+    public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,  //传给后台的分页查询参数，避免前端不传这几个参数，所以需要设置默认值
                               @RequestParam(defaultValue = "10") Integer pageSize,
                               @RequestParam(defaultValue = "") String search) {
-        LambdaQueryWrapper<User> wrapper = Wrappers.<User>lambdaQuery().orderByAsc(User::getId); //通过用户昵称进行模糊搜索
+        LambdaQueryWrapper<User> wrapper = Wrappers.<User>lambdaQuery(); //通过用户昵称进行模糊搜索
         if (StrUtil.isNotBlank(search)) { //通过hutool工具类里的StrUtil直接判断search不为空
-            wrapper.like(User::getNickName, search);  //从数据库查询的用户昵称=关键词search进行模糊查询
+            wrapper.like(User::getNickName, search);  //User::表示User.getxxx,可以直接访问User的属性，判断数据库查询的昵称是否等于search，进行模糊查询
         }
         //new Page<>(pageNum, pageSize)表示分页对象， pageNum表示第几页，pageSize表示每一页的数据量
-        Page<User> userPage = userInfoMapper.selectPage(new Page<>(pageNum, pageSize), wrapper);
+        Page<User> userPage = userInfoMapper.selectPage(new Page<>(pageNum, pageSize), wrapper);  //selectPage是mybitasplus提供的分页查询方法
         return Result.success(userPage);
     }
 }
