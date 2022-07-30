@@ -72,27 +72,3 @@
 	</build>
 
 </project>
-
-
-
-<!--
-		// 该文档主要用来说明该后台springboot工程的结构及各类实现方案的总结，每个文件内也有详细的总结，可跟该文档结合学习该实现：
-		（1）工程启动环境配置：
-		a、创建Spring Initializr工程；
-		b、打开工程后在Setting里配置Maven
-		c、在Project Structure里指定Project SDK为1.8
-		d、在Edit Configurations中选择Spring Boot启动项
-		e、导入对应的maven依赖后，即可启动
-
-		（2）工程结构：
-		a、common文件夹中存放一些公共的组件：Mybatis-plus分页插件、接口结果Result封装类等
-		b、controller是各种与前端交互的接口调用逻辑
-		c、service文件夹中是各种业务接口逻辑
-		d、dao文件夹中是业务接口类与数据库交互之间的调用层
-		e、pojo文件夹中是各种javabean类（各种参数类）
-		f、mapper文件夹中是数据库操作类
-
-		（3）工程实现结构
-		a、javabean类中通过@TableName注解指定关联的数据库表格，即可与表格里的字段一一对应，
-		b、
--->
