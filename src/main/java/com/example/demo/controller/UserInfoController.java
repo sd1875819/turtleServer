@@ -30,11 +30,10 @@ import javax.annotation.Resource;
 
 public class UserInfoController {
 
-    @Autowired
-    UserInfoService userInfoService;
-
+    //@Resource注解可用于bean的注入，即将要使用的类引入，如果对应的接口有两个实现类，则需要指定类名。
+    // 该注解有name和type两个属性,如果name属性有值,则使用byName的自动注入策略,将值作为需要注入bean的名字,如果type有值,则使用byType自动注入策略,将值作为需要注入bean的类型
     @Resource
-    UserInfoDAO userInfoDAO;
+    UserInfoService userInfoService;
 
     @Resource
     UserInfoMapper userInfoMapper;
@@ -65,4 +64,4 @@ public class UserInfoController {
         return Result.success(userPage);
     }
 }
-//@PostMapping是新增、@PutMapping是更新、@GetMapping是查询
+//@PostMapping是新增数据使用、@PutMapping是更新、@GetMapping是查询
