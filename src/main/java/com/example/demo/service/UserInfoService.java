@@ -10,4 +10,5 @@ import com.example.demo.pojo.User;
 public interface UserInfoService {
 
     int insertUserInfoService(User user);
+    int updateUserInfoService(User user);
 }

@@ -23,4 +23,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         int insertResultCode = userInfoDAO.insertUserInfoDAO(user);
         return insertResultCode;
     }
+
+    @Override
+    public int updateUserInfoService(User user) {
+        int updateResultCode = userInfoDAO.updateInfoDAO(user);
+        return updateResultCode;
+    }
 }

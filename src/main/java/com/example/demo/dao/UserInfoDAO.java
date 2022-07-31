@@ -26,4 +26,8 @@ public class UserInfoDAO {
     public int insertUserInfoDAO(User user) {
         return userInfoMapper.insert(user);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
     }
+
+    public int updateInfoDAO(User user) {
+        return  userInfoMapper.updateById(user);
+    }
 }
