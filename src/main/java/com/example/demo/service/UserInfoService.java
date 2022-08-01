@@ -11,4 +11,5 @@ public interface UserInfoService {
 
     int insertUserInfoService(User user);
     int updateUserInfoService(User user);
+    int deleteInfoService(Long id);
 }

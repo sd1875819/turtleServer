@@ -43,18 +43,23 @@ public class UserInfoController {
     public Result submitUserInfo(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
 
         /* 将新增的用户信息插入数据库*/
-        userInfoService.updateUserInfoService(user);
+        userInfoService.insertUserInfoService(user);
 
         return Result.success();
     }
     /*编辑更新行数据*/
     @PutMapping(value = "/update")
     public Result<?> update(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
-        if (null == user.getPassword()) {
-            user.setPassword("123456");
-        }
-        /* 将新增的用户信息插入数据库*/
-        userInfoService.insertUserInfoService(user);
+        /* 将编辑后的用户信息插入数据库*/
+        userInfoService.updateUserInfoService(user);
+
+        return Result.success();
+    }
+    /*删除数据*/
+    @DeleteMapping("/{id}")  /*在删除方法的DeleteMapping注解中用占位符的方式传入参数，当需要传入多个参数时"/{id}/{aaa}/{bb}"的形式*/
+    public Result<?> delete(@PathVariable Long id) {  /*@PathVariable注解获取占位符参数，需要获取多个参数时就对应多个@PathVariable注解*/
+        /* */
+        userInfoService.deleteInfoService(id);
 
         return Result.success();
     }
@@ -73,4 +78,4 @@ public class UserInfoController {
         return Result.success(userPage);
     }
 }
-//@PostMapping是新增数据使用、@PutMapping是更新、@GetMapping是查询
+//@PostMapping是新增数据使用、@PutMapping是更新、@GetMapping是查询、@DeleteMapping 是删除

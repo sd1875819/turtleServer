@@ -30,4 +30,8 @@ public class UserInfoDAO {
     public int updateInfoDAO(User user) {
         return  userInfoMapper.updateById(user);
     }
+
+    public int deleteInfoDAO(Long id) {
+        return  userInfoMapper.deleteById(id);  /*调用BaseMapper类中的deleteById方法删除数据库对应id的行数据*/
+    }
 }

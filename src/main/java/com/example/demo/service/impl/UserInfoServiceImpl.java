@@ -29,4 +29,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         int updateResultCode = userInfoDAO.updateInfoDAO(user);
         return updateResultCode;
     }
+
+    @Override
+    public int deleteInfoService(Long id) {
+        int deleteResultCode = userInfoDAO.deleteInfoDAO(id);
+        return deleteResultCode;
+    }
 }
