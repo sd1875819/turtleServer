@@ -39,9 +39,31 @@ public class UserInfoController {
     UserInfoMapper userInfoMapper;
 
     /*@PostMapping 表示定义一个post接口*/
+    @PostMapping(value = "/login")
+    public Result<?> login(@RequestBody User user) {  /*用User接收前端传过来的用户登陆username和passWord的json数据*/
+
+        /*去数据库查询登陆用户的信息*/
+        userInfoService.queryUserInfoService(user);
+
+        return Result.success();
+    }
+
+    /*@PostMapping 表示定义一个post接口*/
+    @PostMapping(value = "/register")
+    public Result<?> register(@RequestBody User user) {  /*用User接收前端传过来的用户登陆username和passWord的json数据*/
+
+        /*去数据库查询登陆用户的信息*/
+        userInfoService.registerUserInfoService(user);
+
+        return Result.success();
+    }
+
     @PostMapping(value = "/submit")
     public Result submitUserInfo(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
 
+        if (null == user.getPassword()) {
+            user.setPassword("123456");
+        }
         /* 将新增的用户信息插入数据库*/
         userInfoService.insertUserInfoService(user);
 

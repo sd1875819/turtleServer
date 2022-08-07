@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.common.Result;
 import com.example.demo.dao.UserInfoDAO;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserInfoService;
@@ -34,5 +35,15 @@ public class UserInfoServiceImpl implements UserInfoService {
     public int deleteInfoService(Long id) {
         int deleteResultCode = userInfoDAO.deleteInfoDAO(id);
         return deleteResultCode;
+    }
+
+    @Override
+    public Result<?> queryUserInfoService(User user) {
+        return userInfoDAO.queryInfoDAO(user);
+    }
+
+    @Override
+    public Result<?> registerUserInfoService(User user) {
+        return userInfoDAO.registerInfoDAO(user);
     }
 }
