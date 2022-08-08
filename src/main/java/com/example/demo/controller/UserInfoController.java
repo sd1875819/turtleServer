@@ -43,9 +43,7 @@ public class UserInfoController {
     public Result<?> login(@RequestBody User user) {  /*用User接收前端传过来的用户登陆username和passWord的json数据*/
 
         /*去数据库查询登陆用户的信息*/
-        userInfoService.queryUserInfoService(user);
-
-        return Result.success();
+        return userInfoService.queryUserInfoService(user);
     }
 
     /*@PostMapping 表示定义一个post接口*/
@@ -53,9 +51,7 @@ public class UserInfoController {
     public Result<?> register(@RequestBody User user) {  /*用User接收前端传过来的用户登陆username和passWord的json数据*/
 
         /*去数据库查询登陆用户的信息*/
-        userInfoService.registerUserInfoService(user);
-
-        return Result.success();
+        return userInfoService.registerUserInfoService(user);
     }
 
     @PostMapping(value = "/submit")

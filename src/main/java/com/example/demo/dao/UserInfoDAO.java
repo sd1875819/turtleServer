@@ -44,6 +44,7 @@ public class UserInfoDAO {
         if (null == res) {
             return Result.error("-1", "用户名或密码错误");
         }
+        log.info(res.getUsername());
         return Result.success();  /*查询用户存在，返回的code就是0*/
     }
 
