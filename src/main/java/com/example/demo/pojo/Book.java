@@ -24,5 +24,6 @@ public class Book {
     public String author;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8") //设置时间格式
     public Date createTime;
+    public String cover;  //文件地址url
 
 }
