@@ -24,6 +24,6 @@ public class Book {
     public String author;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8") //设置时间格式
     public Date createTime;
-    public String cover;  //文件地址url
+    public String cover;  //文件地址url,注意在数据库里存储url的参数的类型一定要设置大一些，varchar(45)不够，可设置成varchar(200)
 
 }
