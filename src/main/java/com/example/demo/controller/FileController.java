@@ -5,6 +5,9 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
 import com.example.demo.common.Result;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +40,29 @@ public class FileController {
         String rootFilePath = System.getProperty("user.dir") + "/src/main/resources/files/" + flag+ "_" + originalFilename;
         FileUtil.writeBytes(file.getBytes(), rootFilePath);  //使用Hutool工具类提供的工具FileUtil进行IO数据流的读写，直接将传过来的文件以字节流的形式file.getBytes()写入文件夹
         return Result.success(ip + ":" + port + "/files/" + flag);  //上传成功后返回结果url：工程启动的ip+端口+路径+flag
+    }
+
+    //富文本编辑器里的图片上传接口,注意与普通的上传文件接口一样，只是返回值需要符合富文本编辑器组件要求的格式：
+    @PostMapping("editorUpload")
+    public JSON editorUpload(MultipartFile file) throws IOException {  /*MultipartFile file用于接收前台传过来的文件数据对象*/
+        String originalFilename = file.getOriginalFilename();  //获取文件名称，需要思考怎么解决相同文件名重复的问题
+        //定义文件的唯一标识，给上传的文件添加前缀，避免上传文件名重复时文件被覆盖的问题,IdUtil.fastSimpleUUID()可以生成一串不重复的字符串
+        String flag = IdUtil.fastSimpleUUID();
+        //首先通过System.getProperty("user.dir")获取Springboot这个工程的路径地址，再拼接上files文件夹的路径及文件的路径，即是文件存储的绝对路径，注意后面拼接的时候不需要再带工程名，前面已经获取到了
+        String rootFilePath = System.getProperty("user.dir") + "/src/main/resources/files/" + flag+ "_" + originalFilename;
+        FileUtil.writeBytes(file.getBytes(), rootFilePath);  //使用Hutool工具类提供的工具FileUtil进行IO数据流的读写，直接将传过来的文件以字节流的形式file.getBytes()写入文件夹
+        String url = ip + ":" + port + "/files/" + flag;
+
+        /*根据wangEditor官网里图片上传成功的返回格式的要求拼接返回数据：*/
+        JSONObject json = new JSONObject();
+        json.set("errno", 0);
+        JSONArray arr = new JSONArray();
+        JSONObject data = new JSONObject();
+        arr.add(data);
+        data.set("url", url);
+        json.set("data", arr);
+
+        return json;  //上传成功后返回结果url：工程启动的ip+端口+路径+flag
     }
 
     //下载文件的接口,先把文件的唯一标识flag传过来进行查询该文件，所以该处是用@GetMapping查询注解，然后进行下载操作
