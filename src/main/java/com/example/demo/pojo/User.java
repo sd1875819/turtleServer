@@ -23,4 +23,5 @@ public class User {
     public Integer age;
     public String sex;
     public String address;
+    public Integer role;
 }
