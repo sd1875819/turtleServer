@@ -82,6 +82,11 @@ public class UserInfoController {
         return Result.success();
     }
 
+    @GetMapping("/{id}")
+    public Result<?> getById(@PathVariable Long id) {
+        return Result.success(userInfoMapper.selectById(id));
+    }
+
     //*从数据库分页查询*//
     @GetMapping
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,  //传给后台的分页查询参数，避免前端不传这几个参数，所以需要设置默认值
