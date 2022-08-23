@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -60,6 +61,14 @@ public class BookController {
     public Result<?> delete(@PathVariable Long id) {  /*@PathVariable注解获取占位符参数，需要获取多个参数时就对应多个@PathVariable注解*/
         /* */
         bookService.deleteBookService(id);
+
+        return Result.success();
+    }
+
+    /*通过id批量删除行*/
+    @PostMapping("/deleteBatch")
+    public Result<?> deleteBatch(@RequestBody List<Integer> ids) {
+        bookMapper.deleteBatchIds(ids);
 
         return Result.success();
     }
