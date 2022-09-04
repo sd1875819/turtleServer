@@ -14,7 +14,7 @@ import java.util.Date;
  * @Date 2020/9/26 11:57
  * @Version 1.0
  */
-@TableName("news")  //mybatis-plus插件将javabean中的驼峰直接映射成数据库字段的下划线
+@TableName("news")
 @Data
 public class News {
     @TableId(type = IdType.AUTO) /*设置id为自动生成的自增id*/

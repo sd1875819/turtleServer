@@ -28,7 +28,7 @@ public class BookDAO {
      * @return
      */
     public int insertBookDAO(Book book) {
-        return bookMapper.insert(book);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
+        return bookMapper.insert(book);
     }
 
     public int updateBookDAO(Book book) {
@@ -36,6 +36,6 @@ public class BookDAO {
     }
 
     public int deleteBookDAO(Long id) {
-        return  bookMapper.deleteById(id);  /*调用BaseMapper类中的deleteById方法删除数据库对应id的行数据*/
+        return  bookMapper.deleteById(id);
     }
 }

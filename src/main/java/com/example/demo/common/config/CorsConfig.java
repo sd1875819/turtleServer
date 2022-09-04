@@ -12,7 +12,7 @@ import org.springframework.web.filter.CorsFilter;
  * @Version 1.0
  */
 
-//解决跨域的类
+//后端用于解决跨域的类
 @Configuration
 public class CorsConfig {
 

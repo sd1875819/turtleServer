@@ -19,14 +19,14 @@ import javax.annotation.Resource;
 @Slf4j
 public class UserInfoDAO {
 
-    @Resource  /*@Resource该注解将mapper引入到使用类中*/
+    @Resource  /*@Resource该注解可以将mapper对象引入到使用类中*/
     UserInfoMapper userInfoMapper;
     /**
      * @desc 将用户数据插入数据库
      * @return
      */
     public int insertUserInfoDAO(User user) {
-        return userInfoMapper.insert(user);  //直接调用BaseMapper类中的insert方法将数据插入数据库，userInfoVO中的参数名与数据库表中的参数名一一对应即可
+        return userInfoMapper.insert(user);  //直接调用BaseMapper类中的insert方法将数据插入数据库，User中的参数名与数据库表中的参数名一一对应即可
     }
 
     public int updateInfoDAO(User user) {
@@ -34,7 +34,7 @@ public class UserInfoDAO {
     }
 
     public int deleteInfoDAO(Long id) {
-        return  userInfoMapper.deleteById(id);  /*调用BaseMapper类中的deleteById方法删除数据库对应id的行数据*/
+        return  userInfoMapper.deleteById(id);  /*调用BaseMapper类中的deleteById方法可以删除数据库对应id的行数据*/
     }
 
     public Result<?> queryInfoDAO(User user) {
@@ -49,7 +49,7 @@ public class UserInfoDAO {
     }
 
     public Result<?> registerInfoDAO(User user) {
-        /*新增用户前，先要判断用户名是否存在，所以该处只用一个eq去校验用户名是否唯一*/
+        /*新增用户前，先要去数据库查询并判断用户名是否存在，所以该处只需要一个eq去校验用户名是否唯一即可*/
         User res = userInfoMapper.selectOne(Wrappers.<User>lambdaQuery().eq(User::getUsername, user.getUsername()));
         if (null != res) { /*结果不等于null，表示用户名重复*/
             return Result.error("-1", "用户名重复");

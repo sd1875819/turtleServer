@@ -48,14 +48,14 @@ public class UserInfoController {
 
     /*@PostMapping 表示定义一个post接口*/
     @PostMapping(value = "/register")
-    public Result<?> register(@RequestBody User user) {  /*用User接收前端传过来的用户登陆username和passWord的json数据*/
+    public Result<?> register(@RequestBody User user) {
 
         /*去数据库查询登陆用户的信息*/
         return userInfoService.registerUserInfoService(user);
     }
 
     @PostMapping(value = "/submit")
-    public Result submitUserInfo(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
+    public Result submitUserInfo(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为User的java实体*/
 
         if (null == user.getPassword()) {
             user.setPassword("123456");
@@ -67,7 +67,7 @@ public class UserInfoController {
     }
     /*编辑更新行数据*/
     @PutMapping(value = "/update")
-    public Result<?> update(@RequestBody User user) {  /*@RequestBody就是把前端传过来的json对象映射为UserInfoVO的java实体*/
+    public Result<?> update(@RequestBody User user) {
         /* 将编辑后的用户信息插入数据库*/
         userInfoService.updateUserInfoService(user);
 
